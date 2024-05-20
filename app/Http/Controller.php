@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http;
 
 /**
  * @author Pihe Edmond <pihedy@gmail.com>

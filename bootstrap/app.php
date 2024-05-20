@@ -9,12 +9,11 @@ use \Illuminate\Foundation\Configuration\ {Exceptions, Middleware};
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        web: __DIR__ . '/../routes/web.php',
-        commands: __DIR__ . '/../routes/console.php'
-    )
-    ->withMiddleware(function (Middleware $middleware) {
-        //
-    })
-    ->withExceptions(function (Exceptions $exceptions) {
-        //
+        web: base_path('routes/web.php'),
+        api: base_path('routes/api.php'),
+        commands: base_path('routes/console.php')
+    )->withMiddleware(function (Middleware $Middleware) {
+        /* Do nothing. */
+    })->withExceptions(function (Exceptions $Exceptions) {
+        /* Do nothing. */
     })->create();
