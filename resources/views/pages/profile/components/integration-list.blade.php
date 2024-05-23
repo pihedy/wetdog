@@ -8,6 +8,24 @@ User Integration List template.
 
 <style>
 
+    .card-item {
+        display: flex;
+        padding: 1rem;
+        text-decoration: none;
+        border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+    }
+
+    .card-item-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #fff;
+    }
+
+    .card-item:last-child {
+        border-bottom: none;
+    }
+
     .integration-content {
         display: flex;
         flex-direction: row;
@@ -16,6 +34,7 @@ User Integration List template.
         flex-shrink: 0;
         width: 50px;
         height: 50px;
+        margin-right: 1rem;
         font-size: 1.6rem;
         border-radius: 50px;
     }
@@ -28,46 +47,35 @@ User Integration List template.
 
 <div class="card">
 
-    <h5 class="card-header">Integration</h5>
+    <h5 class="card-header py-3">Integration</h5>
 
-    <div class="card-body">
+    <div class="card-body p-0">
 
-        <div class="list-group">
+        @foreach ($integrations as $integration)
 
-            @foreach ($integrations as $integration)
+            @if ($integration['is_active'])
 
-                @if ($integration['is_active'])
+            <a href="{{ $integration['link'] }}" class="card-item border-x-0 border-300">
 
-                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                <div class="integration-content" style="background-color: {{ $integration['darker'] }}">
+                    <i
+                        class="{{ $integration['icon'] }}"
+                        style="color: {{ $integration['color'] }}"
+                    ></i>
+                </div>
 
-                    <div class="integration-content" style="background-color: {{ $integration['darker'] }}">
-                        <i
-                            class="{{ $integration['icon'] }}"
-                            style="color: {{ $integration['color'] }}"
-                        ></i>
-                    </div>
+                <div class="card-item-body">
 
-                    <div class="d-flex gap-2 w-100 justify-content-between align-items-center">
+                    <h6 class="m-0">{{ $integration['name'] }}</h6>
+                    <small class="opacity-50 text-nowrap">2024 május 11. 16:14</small>
 
-                        <div class="d-flex align-items-center">
-                            <h6 class="m-0">{{ $integration['name'] }}</h6>
-                        </div>
+                </div>
 
-                        @if ($integration['has_link'])
+            </a>
 
-                            <small class="opacity-50 text-nowrap">2024 május 11. 16:14</small>
+            @endif
 
-                        @endif
-
-                    </div>
-
-                </a>
-
-                @endif
-
-            @endforeach
-
-        </div>
+        @endforeach
 
     </div>
 

@@ -18,7 +18,14 @@ Route::group([
     $Router->group([
         'prefix' => 'profile/', 'as' => 'profile.',
     ], function (Router $Router) {
-        $Router->resource('tokens', \App\Http\Controllers\Web\Profile\PersonalAccessToken::class)->only(['store']);
+        $Router->resource('tokens', \App\Http\Controllers\Web\Profile\PersonalAccessTokenController::class)->only(['store']);
+
+    });
+
+    $Router->group([
+        'prefix' => 'auth/', 'as' => 'profile.',
+    ], function (Router $Router) {
+        $Router->resource('twitch', \App\Http\Controllers\Web\Auth\TwitchAccessTokenController::class)->only(['index']);
     });
 
     $Router->resource('dashboard', \App\Http\Controllers\Web\DashboardController::class)->only(['index']);

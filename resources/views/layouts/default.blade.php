@@ -6,11 +6,13 @@
 
     <body>
 
-        <main class="d-flex flex-nowrap">
+        <main>
 
-            @include('components.sidebar')
+            {{-- @include('components.sidebar') --}}
 
-            <div class="container mt-4" style="margin-left: 280px;">
+            @include('components.navbar')
+
+            <div class="container mt-4">
 
                 @include('components.notice')
 

@@ -7,7 +7,7 @@ Profile Settings template.
 --}}
 
 <div class="card">
-    <h5 class="card-header">Profile Details</h5>
+    <h5 class="card-header py-3">Profile Details</h5>
 
     <div class="card-body">
 

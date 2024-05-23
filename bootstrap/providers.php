@@ -8,6 +8,7 @@
 
 return [
     \App\Providers\AppServiceProvider::class,
-    \App\Providers\Views\SitebarComponentProvider::class,
+    \App\Providers\EventServiceProvider::class,
+    \App\Providers\Views\NavbarComponentProvider::class,
     \App\Providers\Views\HeadComponentProvider::class,
 ];

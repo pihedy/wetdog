@@ -8,8 +8,20 @@ use \Illuminate\Support\Facades\Auth;
 
 use \Illuminate\Http\ {Request, RedirectResponse};
 
-class PersonalAccessToken extends Controller
+/**
+ * Provides functionality for managing personal access tokens for the authenticated user.
+ *
+ * @author Pihe Edmond <pihedy@gmail.com>
+ */
+class PersonalAccessTokenController extends Controller
 {
+    /**
+     * Create a new personal access token for the authenticated user.
+     *
+     * @param \Illuminate\Http\Request $Request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $Request): RedirectResponse
     {
         /**

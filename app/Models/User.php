@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use \Illuminate\Database\Eloquent\Factories\HasFactory;
+use \Illuminate\Database\Eloquent\Relations\HasMany;
+
 use \Illuminate\Foundation\Auth\User as Authenticatable;
 use \Illuminate\Notifications\Notifiable;
 
@@ -42,5 +44,27 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password'          => 'hashed'
         ];
+    }
+
+    /**
+     * Any other "meta" data that only the user has.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function attributes(): HasMany
+    {
+        return $this->hasMany(UserAttribute::class, 'user_id');
+    }
+
+    /**
+     * Gets the user attribute data model for the given attribute key.
+     *
+     * @param string $attributeKey The key of the attribute to get data for.
+     *
+     * @return \App\Models\UserAttribute|null The attribute data model if found, null otherwise.
+     */
+    public function getAttributeData(string $attributeKey): ?UserAttribute
+    {
+        return $this->attributes()->where('attribute_key', $attributeKey)?->firstOrFail();
     }
 }

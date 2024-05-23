@@ -7,8 +7,20 @@ use \App\Http\Controller;
 use \Illuminate\Http\Response;
 use \Illuminate\Support\Facades\Auth;
 
+use \Laravel\Socialite\Facades\Socialite;
+
+/**
+ * Handles user profile-related functionality.
+ *
+ * @auhor Pihe Edmond <pihedy@gmail.com>
+ */
 class ProfileController extends Controller
 {
+    /**
+     * Display the user's profile page.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index(): Response
     {
         return response()->view('main', [
@@ -25,7 +37,7 @@ class ProfileController extends Controller
                         'icon'      => 'bi bi-twitch',
                         'color'     => '#6441A4',
                         'darker'    => '#281a42',
-                        'link'      => 'https://twitch.tv/pihedy',
+                        'link'      => Socialite::driver('twitch')->redirect()->getTargetUrl(),
                         'is_active' => true,
                         'has_link'  => true,
                     ],

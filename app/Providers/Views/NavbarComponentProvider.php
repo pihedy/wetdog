@@ -11,11 +11,11 @@ use \Illuminate\View\View as IlluminateView;
 use \App\Components\Integration\Gravatar;
 
 /**
- * Provides a service provider for the sidebar component in the application.
+ * Provides a service provider for the navbar component in the application.
  *
  * @author Pihe Edmond <pihedy@gmail.com>
  */
-class SitebarComponentProvider extends ServiceProvider
+class NavbarComponentProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -30,8 +30,8 @@ class SitebarComponentProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('components.sidebar', function (IlluminateView $View) {
-            $data = array_merge(config('sitebar-component', []), [
+        View::composer('components.navbar', function (IlluminateView $View) {
+            $data = array_merge(config('navbar-component', []), [
                 'current'   => request()->route()->getName(),
                 'user'      => [
                     'name'      => auth()->user()->name,
